@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planos de Serviço - Bartender</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #000000; /* fundo preto vivo */
+            min-height: 100vh;
+            padding: 20px;
+            position: relative;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: #D4AF37;
+            margin-bottom: 40px;
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            color: #C4A237;
+        }
+        
+        .plans-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .plan-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .plan-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .plan-card.premium {
+            background: linear-gradient(135deg, #ffd700, #ffed4e);
+            color: #333;
+        }
+        
+        .plan-card.premium::before {
+            content: "⭐ MAIS POPULAR";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #ff6b6b;
+            color: white;
+            padding: 5px 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(45deg) translate(30%, -50%);
+        }
+        
+        .plan-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .plan-subtitle {
+            text-align: center;
+            font-style: italic;
+            opacity: 0.7;
+            margin-bottom: 25px;
+        }
+        
+        .plan-features {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .plan-features li {
+            padding: 8px 0;
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+        }
+        
+        .plan-features li::before {
+            content: "🍸";
+            margin-right: 10px;
+            font-size: 1.1rem;
+        }
+        
+        .plan-ideal {
+            background: rgba(0,0,0,0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            font-style: italic;
+            text-align: center;
+        }
+        
+        .cta-section {
+            background: rgba(30, 30, 30, 0.95);
+            border: 2px solid #D4AF37;
+            border-radius: 20px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            animation: fadeInUp 1s ease-out 0.3s both;
+        }
+        
+        .cta-section h2 {
+            color: #D4AF37;
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .cta-section p {
+            color: #C4A237;
+            margin-bottom: 20px;
+        }
+        
+        .whatsapp-btn {
+            background: linear-gradient(135deg, #D4AF37, #F4D03F);
+            color: #1a1a1a;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+        }
+        
+        .whatsapp-btn:hover {
+            background: linear-gradient(135deg, #F4D03F, #D4AF37);
+            transform: scale(1.05);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .plans-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .plan-card {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍸 Planos de Serviço</h1>
+            <p>Escolha a experiência ideal para seu evento</p>
+        </div>
+        
+        <div class="plans-grid">
+            <!-- Plano Básico -->
+            <div class="plan-card">
+                <div class="plan-title">📋 BÁSICO</div>
+                <div class="plan-subtitle">Para quem quer praticidade e qualidade</div>
+                
+                <ul class="plan-features">
+                    <li>Orçamento básico em 24h</li>
+                    <li>Reunião de planejamento (30min)</li>
+                    <li>1 bartender profissional</li>
+                    <li>Setup padrão 30min antes</li>
+                </ul>
+                
+                <div class="plan-ideal">
+                    <strong>Ideal para:</strong> Eventos descontraídos, orçamento enxuto
+                </div>
+            </div>
+            
+            <!-- Plano Intermediário -->
+            <div class="plan-card" style="background: linear-gradient(135deg, #4A90E2, #7BB3F0); color: white;">
+                <div class="plan-title">🥃 INTERMEDIÁRIO</div>
+                <div class="plan-subtitle">A escolha mais equilibrada</div>
+                
+                <ul class="plan-features">
+                    <li>Orçamento detalhado com opções</li>
+                    <li>Planejamento completo (1h)</li>
+                    <li>Cardápio personalizado</li>
+                    <li>Lembretes semanais até o evento</li>
+                    <li>Indicação de fornecedores</li>
+                    <li>Setup profissional 1h antes</li>
+                </ul>
+                
+                <div class="plan-ideal">
+                    <strong>Ideal para:</strong> Aniversários especiais, eventos corporativos, confraternizações
+                </div>
+            </div>
+            
+            <!-- Plano Premium -->
+            <div class="plan-card premium">
+                <div class="plan-title">🏆 PREMIUM</div>
+                <div class="plan-subtitle">Experiência completa e exclusiva</div>
+                
+                <ul class="plan-features">
+                    <li>Consultoria completa de custos</li>
+                    <li>Planejamento executivo (2+ reuniões)</li>
+                    <li>Cardápio exclusivo</li>
+                    <li>Repertório ilimitado</li>
+                    <li>Assessoria até o dia do evento</li>
+                    <li>Fornecedores premium negociados</li>
+                    <li>Flexibilidade total de horários</li>
+                </ul>
+                
+                <div class="plan-ideal">
+                    <strong>Ideal para:</strong> Casamentos, eventos corporativos VIP, formaturas
+                </div>
+            </div>
+        </div>
+        
+        <div class="cta-section">
+            <h2>💬 Qual plano combina mais com seu evento?</h2>
+            <p>Posso adequar qualquer opção às suas necessidades!</p>
+            <a href="https://wa.me/5583987040987" class="whatsapp-btn">📱 Falar no WhatsApp</a>
+        </div>
+    </div>
+</body>
+</html>
